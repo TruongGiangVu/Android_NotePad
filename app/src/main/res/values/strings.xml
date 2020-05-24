@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">NotePad</string>
+    <string name="note_title">Title</string>
+    <string name="note_content">Content</string>
+    <string name="note_id">Id</string>
+    <string name="notepad_id">Id</string>
+    <string name="notepad_title">Title</string>
+    <string name="notepad_content">Type here ....</string>
+    <string name="notepad_btnReturn">Back to list</string>
+    <string name="notepad_btnSave">Save</string>
+    <string name="notepad_btnCreate">Create</string>
+</resources>
