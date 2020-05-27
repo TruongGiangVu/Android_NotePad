@@ -9,6 +9,7 @@
     android:layout_margin="12dp">
     <TextView
         android:id="@+id/noteTitle"
+        android:textStyle="bold"
         android:layout_weight="3"
         android:textSize="10pt"
         android:layout_width="0dp"

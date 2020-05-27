@@ -75,7 +75,7 @@ public class ConnectDOM {
     public ArrayList<NoteItem> ReadByDOM() {
         ArrayList<NoteItem> items = new ArrayList<NoteItem>();
         NoteItem item = null;
-        String title = "", content = "",id="";
+        String title = "", content = "", id = "";
         if (document == null) {
             return null;
         }
@@ -89,7 +89,7 @@ public class ConnectDOM {
                 title = element.getAttribute("title");
                 NodeList nodeListChild = element.getElementsByTagName("content");
                 content = nodeListChild.item(0).getTextContent();
-                item = new NoteItem(Integer.parseInt(id), title,content);
+                item = new NoteItem(Integer.parseInt(id), title, content);
                 items.add(item);
             }
         }
@@ -104,7 +104,7 @@ public class ConnectDOM {
             if (node instanceof Element) {
                 Element element = (Element) node;
                 String id = element.getAttribute("id");
-                if (id.equals(note.getId()+"")) {
+                if (id.equals(note.getId() + "")) {
                     node.getParentNode().removeChild(node);
                     RewriteFileByDOM(document);
                     return;
@@ -117,7 +117,7 @@ public class ConnectDOM {
         Element root = document.getDocumentElement();
 
         Element newNote = document.createElement("note");
-        newNote.setAttribute("id", note.getId()+"");
+        newNote.setAttribute("id", note.getId() + "");
         newNote.setAttribute("title", note.getTitle());
         Element newContent = document.createElement("content");
         newContent.appendChild(document.createTextNode(note.getContent()));
@@ -135,7 +135,8 @@ public class ConnectDOM {
             if (node instanceof Element) {
                 Element element = (Element) node;
                 String id = element.getAttribute("id");
-                if (id.equals(note.getId()+"")) {
+                if (id.equals(note.getId() + "")) {
+                    element.setAttribute("title", note.getTitle());
                     NodeList nodeListChild = element.getElementsByTagName("content");
                     nodeListChild.item(0).setTextContent(note.getContent());
                     RewriteFileByDOM(document);

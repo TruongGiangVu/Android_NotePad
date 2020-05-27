@@ -25,7 +25,7 @@ public class NoteListAdapter extends ArrayAdapter<NoteItem> {
     }
 
     public class ViewHolder {
-        TextView txtTitle, txtContent,txtId;
+        TextView txtTitle, txtContent, txtId;
     }
 
     @NonNull
@@ -37,7 +37,7 @@ public class NoteListAdapter extends ArrayAdapter<NoteItem> {
             LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
             convertView = inflater.inflate(layout, null);
             holder = new ViewHolder();
-            holder.txtId =(TextView) convertView.findViewById(R.id.noteId);
+            holder.txtId = (TextView) convertView.findViewById(R.id.noteId);
             holder.txtTitle = (TextView) convertView.findViewById(R.id.noteTitle);
             holder.txtContent = (TextView) convertView.findViewById(R.id.noteContent);
             convertView.setTag(holder);
@@ -45,21 +45,27 @@ public class NoteListAdapter extends ArrayAdapter<NoteItem> {
             holder = (ViewHolder) convertView.getTag();
         }
         NoteItem item = list.get(position);
-        holder.txtId.setText(item.getId()+"");
+        holder.txtId.setText(item.getId() + "");
         holder.txtTitle.setText(item.getTitle());
         if (item.getContent().length() > 20)
-            holder.txtContent.setText(item.getContent().substring(0, 20)+" ...");
+            holder.txtContent.setText(item.getContent().substring(0, 20) + " ...");
         else
             holder.txtContent.setText(item.getContent());
         return convertView;
     }
-    public int getSize(){
+
+    public int getSize() {
         return this.list.size();
     }
-    public int getLastId(){
-        return  list.get(getSize()-1).getId();
+
+    public int getLastId() {
+        return list.get(getSize() - 1).getId();
     }
-    public int newId(){
-        return getLastId()+1;
+
+    public int newId() {
+        if (getSize() == 0) {
+            return 0;
+        } else
+            return getLastId() + 1;
     }
 }

@@ -1,12 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
-    <item android:title="New note"
+    <item
         android:id="@+id/menuNew"
-        android:icon="@android:drawable/ic_menu_add"
-        app:showAsAction="always"/>
-    <item android:title="Instructions"
+        android:icon="@android:drawable/ic_input_add"
+        android:title="@string/new_note"
+        app:showAsAction="always" />
+    <item android:title="@string/instructions"
         android:id="@+id/menuInstruction" />
-    <item android:title="About us"
+    <item android:title="@string/about_us"
         android:id="@+id/menuAboutUs" />
 </menu>

@@ -15,6 +15,10 @@ import android.widget.ListView;
 import android.widget.PopupMenu;
 import android.widget.Toast;
 
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
+
 public class MainActivity extends AppCompatActivity {
 
     ListView listNote;
@@ -26,12 +30,18 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
         String path = this.getFilesDir().getAbsolutePath() + "/note.xml";
         dom = new ConnectDOM(path);
 
         listNote = (ListView) findViewById(R.id.noteList);
-        adapter = new NoteListAdapter(MainActivity.this, R.layout.note_item_list, dom.ReadByDOM());
+        ArrayList<NoteItem> items =dom.ReadByDOM();
+        Collections.sort(items, new Comparator<NoteItem>() {
+            @Override
+            public int compare(NoteItem n1, NoteItem n2) {
+                return n2.getId() - n1.getId();
+            }
+        });
+        adapter = new NoteListAdapter(MainActivity.this, R.layout.note_item_list, items );
         if (adapter.list == null)
             listNote.setAdapter(null);
         else listNote.setAdapter(adapter);

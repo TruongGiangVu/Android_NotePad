@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <item android:id="@+id/menuOpen"
-        android:title="Open this note"/>
     <item android:id="@+id/menuDelete"
-        android:title="Delete this note "/>
+        android:title="@string/delete_note"/>
+    <item
+        android:id="@+id/menuOpen"
+        android:title="@string/open_note" />
 
 </menu>

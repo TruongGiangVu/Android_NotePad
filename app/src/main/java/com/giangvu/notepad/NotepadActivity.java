@@ -34,7 +34,7 @@ public class NotepadActivity extends AppCompatActivity {
         storeType = bundle.getString("store");
         Mapping();
         if (item != null) {
-            txtId.setText( item.getId()+"" );
+            txtId.setText(item.getId() + "");
             edtTitle.setText(item.getTitle());
             edtContent.setText(item.getContent());
         }
@@ -46,9 +46,8 @@ public class NotepadActivity extends AppCompatActivity {
         edtContent = (EditText) findViewById(R.id.edtContent);
         btnReturn = (Button) findViewById(R.id.btnReturn);
         btnStore = (Button) findViewById(R.id.btnStore);
-        if (storeType.equals("save")){
+        if (storeType.equals("save")) {
             btnStore.setText(R.string.notepad_btnSave);
-            edtTitle.setEnabled(false);
         }
         if (storeType.equals("create"))
             btnStore.setText(R.string.notepad_btnCreate);
@@ -63,27 +62,30 @@ public class NotepadActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 NoteItem note = getNote();
-                if (storeType.equals("create")) {
-                    // new id
-                    NoteListAdapter adapter = new NoteListAdapter(getApplicationContext(),0,dom.ReadByDOM());
-                    note.setId(adapter.newId());
-                    dom.CreateNewByDOM(note);
-                    Toast.makeText(getApplicationContext(), "Create " + note.getTitle() + " success!", Toast.LENGTH_SHORT).show();
+                if (note.getTitle().equals("")) {
+                    Toast.makeText(getApplicationContext(), "Your title is empty.", Toast.LENGTH_SHORT).show();
+                } else {
+                    if (storeType.equals("create")) {
+                        // new id
+                        NoteListAdapter adapter = new NoteListAdapter(getApplicationContext(), 0, dom.ReadByDOM());
+                        note.setId(adapter.newId());
+                        dom.CreateNewByDOM(note);
+                        Toast.makeText(getApplicationContext(), "Create " + note.getTitle() + " success!", Toast.LENGTH_SHORT).show();
+                    }
+                    if (storeType.equals("save")) {
+                        note.setId(Integer.parseInt(txtId.getText().toString()));
+                        dom.SaveByDOM(note);
+                        Toast.makeText(getApplicationContext(), "Change content of " + note.getTitle() + " success! ", Toast.LENGTH_SHORT).show();
+                    }
                 }
-                if (storeType.equals("save")) {
-                    note.setId(Integer.parseInt(txtId.getText().toString()));
-                    dom.SaveByDOM(note);
-                    Toast.makeText(getApplicationContext(), "Change content of " + note.getTitle() + " success! ", Toast.LENGTH_SHORT).show();
-                }
-
             }
         });
     }
 
     private NoteItem getNote() {
         NoteItem note = new NoteItem();
-        note.setTitle(edtTitle.getText().toString());
-        note.setContent(edtContent.getText().toString());
+        note.setTitle(edtTitle.getText().toString().trim());
+        note.setContent(edtContent.getText().toString().trim());
         return note;
     }
 }

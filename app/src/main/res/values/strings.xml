@@ -6,7 +6,13 @@
     <string name="notepad_id">Id</string>
     <string name="notepad_title">Title</string>
     <string name="notepad_content">Type here ....</string>
-    <string name="notepad_btnReturn">Back to list</string>
+    <string name="notepad_btnReturn">Back</string>
     <string name="notepad_btnSave">Save</string>
     <string name="notepad_btnCreate">Create</string>
+    <string name="title">List of notes</string>
+    <string name="delete_note">Delete this note</string>
+    <string name="open_note">Open this note</string>
+    <string name="instructions">Instructions</string>
+    <string name="about_us">About us</string>
+    <string name="new_note">New note</string>
 </resources>
