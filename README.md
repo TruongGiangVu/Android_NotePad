@@ -7,7 +7,7 @@ Version 2.0: using DOM to connect with file .xml
 
 Version 2.3 class NoteItem add attribute id
 
-Version 3.0 update interface and fix rechange title, reverse sort note
+Version 3.0 update user interface and fix rechange title, reverse sort note
 
 Folder data chứa file note.xml, dữ liệu ban đầu.
 
